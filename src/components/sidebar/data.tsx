@@ -3,14 +3,6 @@ import { ReactNode } from "react";
 import { FaUsers } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
 import { SlUserFollowing,  SlUserFollow } from "react-icons/sl";
-import {
-    Bet,
-    Community,
-    Gamepad,
-    Leaderboard,
-    Video,
-    Tokensidebar,
-} from '../../assets/images-icon/';
 
 interface Path {
     id: number;
@@ -23,7 +15,7 @@ const paths: Path[] = [
     {
         id: 1,
         icon: (
-            <FaUsers className='text-primaryLightGray'/>
+            <FaUsers className='text-primaryLightBlue'/>
         ),
         name: "Users",
         path: '/',
@@ -34,7 +26,7 @@ const paths: Path[] = [
             <SlUserFollow  className='text-primaryLightGray'/>
         ),
         name: "Followers",
-        path: '',
+        path: '/followers',
     },
     {
         id: 3,
@@ -42,7 +34,7 @@ const paths: Path[] = [
             <SlUserFollowing  className='text-primaryLightGray'/>
         ),
         name: "Following",
-        path: '',
+        path: '/following',
     },
     {
         id: 4,
@@ -50,7 +42,7 @@ const paths: Path[] = [
             <CgProfile   className='text-primaryLightGray'/>
         ),
         name: "Profile",
-        path: '',
+        path: '/profile',
     },
 ];
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatart, Badge,Logo,} from '../../assets/images-icon/';
+import { Avatart,Logo,} from '../../assets/images-icon/';
 import { useNavigate } from 'react-router-dom';
 function Header(): JSX.Element {
 
@@ -29,10 +29,6 @@ function Header(): JSX.Element {
 
                <div className="w-full px-2 text-primaryWhite">
                     <span className="font-medium text-[16px] ">Akoiola Olalekan</span>
-                </div>
-
-                <div className="w-[77%] md:w-auto px-2 mb-1 md:mb-0">
-                    <img src={Badge} alt="dropdown h-[20px] md:h-auto" />
                 </div>
 
                </div>

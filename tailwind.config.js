@@ -12,6 +12,9 @@ module.exports = {
         primaryLightBlack: "#3B3B3B",          
         primarySemiBlack: "#5A5A5A",          
         primaryLightGray: "#707070",
+        primaryBlue: "#4682B4",
+        primaryLightBlue: "#B0C4DE",
+        primaryLightWhite: "#F7FAFC",
         primaryGray: "#7E7F7F",
       },
       fontFamily: {

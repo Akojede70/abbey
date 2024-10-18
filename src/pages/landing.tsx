@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout/layout'
+import Button from '../components/button/button';
 
 const users = [
   { id: 1, username: 'johndoe', firstName: 'John', lastName: 'Doe' },
@@ -10,20 +11,18 @@ const users = [
 const Landing = () => {
   return (
    <Layout>
-    <div className="flex flex-col gap-6 p-6 max-w-md mx-auto border border-red-700">
+    <div className="flex flex-col gap-6 p-5 max-w-sm mx-auto">
       {users.map((user) => (
         <div key={user.id} className="bg-[#F7FAFC] p-5 rounded-lg shadow-md">
-          <div className="text-xl font-bold">{user.username}</div>
-          <div className="text-gray-500">
+          <div className="text-xl font-bold">@{user.username}</div>
+          <div className="text-primaryLightGray">
             {user.firstName} {user.lastName}
           </div>
           <div className="flex gap-4 mt-4">
-            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-              Follow
-            </button>
-            <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
-              View Profile
-            </button>
+           
+            <Button label='Follow'></Button>
+      
+            <Button label='View Profile'  ></Button>
           </div>
         </div>
       ))}
