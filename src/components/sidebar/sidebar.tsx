@@ -30,7 +30,7 @@ function SideBar(): JSX.Element {
             
           </div>
         ))}
-        <div className='my-[48%] pl-1 md:pl-3 '>
+        <div className='my-[35%] pl-1 md:pl-3 '>
     <Button label='Log Out' className='w-[90%] md:w-[70%]'></Button>
   </div>
       </div>

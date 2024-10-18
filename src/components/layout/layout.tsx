@@ -22,7 +22,7 @@ function Layout({ name = "Home", children }: LayoutProps) {
       <SideBar />
 
       {/* Middle Content Area */}
-      <div className="flex-grow w-1/2  pt-[1%] bg-[#B0C4DE]">
+      <div className="flex-grow w-1/2  pt-[1%] bg-[#B0C4DE] overflow-y-auto">
         <div className="w-full h-full">{children}</div>
       </div>
 
