@@ -18,7 +18,7 @@ const paths: Path[] = [
             <FaUsers className='text-primaryLightGray'/>
         ),
         name: "Users",
-        path: '/',
+        path: '/dashboard',
     },
     {
         id: 2,

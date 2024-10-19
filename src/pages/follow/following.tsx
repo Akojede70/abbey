@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from '../components/layout/layout';
-import FollowerCard from '../components/card/followers-card';
+import Layout from '../../components/layout/layout';
+import FollowerCard from '../../components/card/followers-card';
 interface Follower {
   username: string;
   firstName: string;
@@ -15,11 +15,11 @@ const followers: Follower[] = [
   { username: 'michaelBrown', firstName: 'Michael', lastName: 'Brown', profilePicture: 'https://via.placeholder.com/150' },
 ];
 
-const Followers: React.FC = () => {
+const Following: React.FC = () => {
   return (
     <Layout>
       <div className="p-4">
-        <h1 className="text-xl font-bold mb-4">Followers</h1>
+        <h1 className="text-xl font-bold mb-4">Following</h1>
         <div className="flex flex-col gap-4">
           {followers.map((follower, index) => (
             <FollowerCard
@@ -38,4 +38,4 @@ const Followers: React.FC = () => {
   );
 };
 
-export default Followers;
+export default Following;
