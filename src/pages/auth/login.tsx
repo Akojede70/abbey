@@ -12,6 +12,12 @@ const Login = () => {
         <div className='mt-[18px]'>
         <Button width="w-full" height='h-[45px]' label="Register" type="submit" />
         </div>
+        <div className="mt-4 text-center">
+            <p className="text-sm text-primaryGray">
+                Don't have an account?{' '}
+                <a href="/register" className="text-primaryBlue hover:underline">Register</a>
+            </p>
+            </div>
     </form>
 </div>
   )
