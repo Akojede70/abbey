@@ -34,6 +34,12 @@ const Register: React.FC = () => {
                 <div className='mt-[18px]'>
                 <Button width="w-full" height='h-[45px]' label="Register" type="submit" />
                 </div>
+                <div className="mt-4 text-center">
+            <p className="text-sm text-primaryGray">
+                Already have an account?{' '}
+                <a href="/" className="text-primaryBlue hover:underline">Login</a>
+            </p>
+        </div>
             </form>
         </div>
     );
