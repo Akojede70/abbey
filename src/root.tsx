@@ -5,7 +5,8 @@ import { CombineProviders, providers } from "./contexts"
 import Login from "./pages/auth/login"
 import Register from "./pages/auth/register"
 import UserList from "./pages/userlist"
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -21,10 +22,11 @@ function App() {
             <Route  path="/dashboard" element={<UserList />} />
             <Route  path="/followers" element={<Followers />} />
             <Route  path="/following" element={<Following />} />
-            <Route  path="/profile" element={<Profile />} />
+            <Route  path="/profile/:userId" element={<Profile />} />
            
           </Routes>
         </Router>
+        <ToastContainer/>
       </CombineProviders>
     </Fragment>
   )
