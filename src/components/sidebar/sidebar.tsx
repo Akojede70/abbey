@@ -6,6 +6,11 @@ import Button from '../button/button';
 function SideBar(): JSX.Element {
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+    navigate('/'); 
+  };
   return (
     <div className="w-[23%] h-full overflow-hidden flex-shrink-0 bg-primaryLightWhite">
       <div className="pt-20 md:pt-32 lg:pt-5 lg:pl-5 flex flex-col gap-4 md:gap-7">
@@ -31,7 +36,7 @@ function SideBar(): JSX.Element {
           </div>
         ))}
         <div className='my-[35%] pl-1 md:pl-3 '>
-    <Button label='Log Out' className='w-[90%] md:w-[70%]'></Button>
+    <Button label='Log Out' className='w-[90%] md:w-[70%]' onClick={handleLogout}></Button>
   </div>
       </div>
     </div>
