@@ -5,7 +5,7 @@ function Header(): JSX.Element {
 
     const navigate = useNavigate()
   const handleClick = () => {
-    navigate("/")
+    navigate("/dashboard")
     window.scrollTo(0,0)
   }
     return (

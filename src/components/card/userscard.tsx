@@ -21,8 +21,6 @@ const UserCard: React.FC<UserCardProps> = ({
   isFollowing,
   onFollowClick,
   userId,
-
-  
 }) => {
   const navigate = useNavigate();
   
@@ -31,10 +29,10 @@ const UserCard: React.FC<UserCardProps> = ({
   }
   return (
     <div className="bg-[#F7FAFC] p-5 rounded-lg shadow-md w-full h-[150px]">
-      <div className="text-xl font-bold">@{username}</div>
-      <div className="text-primaryLightGray">
+      <div className=" text-xl font-bold">
         {firstName} {lastName}
       </div>
+      <div className="text-primaryLightGray">@{username}</div>
       <div className="flex gap-4 mt-4">
         <Button label={isFollowing ? "Unfollow" : "Follow"} onClick={onFollowClick} className={isFollowing ? "bg-red-500 text-white" : "bg-blue-500 text-white"}/>
         <Button label="View Profile" onClick={onViewProfileClick} />

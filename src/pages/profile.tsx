@@ -13,15 +13,15 @@ const Profile: React.FC = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const fetchedProfile = await getIndividualUserDetails(Number(userId)); // Fetch user details
+        const fetchedProfile = await getIndividualUserDetails(Number(userId)); 
         setUserProfile(fetchedProfile);
       } catch (error) {
         console.error("Error fetching user profile:", error);
-        setUserProfile(null); // Handle error case
+        setUserProfile(null); 
       }
     };
 
-    fetchUserProfile(); // Call the function to fetch user profile
+    fetchUserProfile(); 
   }, [userId]);
 
   return (
@@ -37,7 +37,7 @@ const Profile: React.FC = () => {
           </div>
 
           {/* Bio */}
-          <p className="mb-4 text-gray-700">{userProfile.bio}</p>
+          <p className="mb-4 text-gray-700">{userProfile?.user?.bio}</p>
 
           {/* Followers & Following Count */}
           <div className="flex gap-8 mb-6">
@@ -91,7 +91,7 @@ const Profile: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className='text-center text-4xl '> loading User...</div> 
+        <div className='text-center text-4xl '> Loading user...</div> 
       )}
     </Layout>
   );

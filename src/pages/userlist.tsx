@@ -78,7 +78,7 @@ const UsersList: React.FC = () => {
     <Layout>
       <div className="flex flex-col gap-6 p-5 max-w-sm mx-auto">
         {loading ? (
-          <p className="text-4xl text-center">Loading users...</p> 
+          <p className="text-3xl text-center">Loading users...</p> 
         ) : error ? (
           <p className="text-primarySemiBlack text-center text-3xl">{error}</p> 
         ) : (
@@ -87,8 +87,8 @@ const UsersList: React.FC = () => {
               <UserCard
                 key={user.id}
                 username={`${user.firstName.toLowerCase()}${user.lastName.toLowerCase()}`}
-                firstName={user.firstName}
-                lastName={user.lastName}
+                firstName={user.firstName.charAt(0).toUpperCase() + user.firstName.slice(1)}
+                lastName={user.lastName.charAt(0).toUpperCase() + user.lastName.slice(1)}
                 isFollowing={followedUsers.has(user.id)} 
                 onFollowClick={() => handleFollowClick(user.id)}
                 onViewProfileClick={() => console.log(`Viewing profile of ${user.username}`)} 

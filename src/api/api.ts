@@ -1,7 +1,7 @@
 import { jwtDecode } from 'jwt-decode';
 import axiosInstance from './axios-Instance';
 
-interface User {
+export interface User {
     id: number;
     firstName: string;
     lastName: string;
@@ -29,9 +29,9 @@ interface FollowData {
 }
 
 export interface IndividualUserResponse {
-    message: string;
+    message?: string;
     user: User;
-    bio:string;
+    bio?:string;
     followersCount: number;
     followersList: User[];
     followingCount: number;
@@ -76,6 +76,13 @@ export const getLoggedInUserId = () => {
 };
 
 
+export const getloggedinUserConnections = async (userId: number): Promise<IndividualUserResponse> => {
+    const response = await axiosInstance.get(`/api/v1/users/${userId}/connection`);
+    console.log(response)
+    return response.data;
+  };
+
+  
 export const getAllUsers = async (): Promise<GetAllUsersResponse> => {
     const response = await axiosInstance.get('/api/v1/users');
     return response.data;
