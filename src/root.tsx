@@ -21,7 +21,7 @@ function App() {
             <Route  path="/dashboard" element={<UserList />} />
             <Route  path="/followers" element={<Followers />} />
             <Route  path="/following" element={<Following />} />
-            <Route  path="/profile" element={<Profile />} />
+            <Route  path="/profile/:userId" element={<Profile />} />
            
           </Routes>
         </Router>
