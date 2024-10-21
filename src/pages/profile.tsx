@@ -91,7 +91,7 @@ const Profile: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className='text-center text-4xl '> Loading user...</div> 
+        <div className='text-center text-4xl '> Loading Profile...</div> 
       )}
     </Layout>
   );

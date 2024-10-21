@@ -6,14 +6,19 @@ import Button from '../../components/button/button';
 import { loginUser } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
 import { Spinner } from 'flowbite-react'; 
-// import { Toast } from 'flowbite-react';
+import { toast } from 'react-toastify';
+
+
 const Login: React.FC = () => {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
    
     const validationSchema = Yup.object({
         email: Yup.string().email('Invalid email format').required('Email is required'),
-        password: Yup.string().required('Password is required'),
+        password: Yup.string()
+        .min(8, 'Password must be at least 8 characters')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])/, 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character')
+        .required('Password is required'),
     });
 
     return (
@@ -24,23 +29,22 @@ const Login: React.FC = () => {
                     password: '',
                 }}
                 validationSchema={validationSchema}
-                onSubmit={async (values, { setSubmitting, setErrors }) => {
+                onSubmit={async (values, ) => {
                     setLoading(true);
                     try {
                         const response = await loginUser(values);
-                        console.log('Login successful:', response.data);
+                        console.log('Login response:', response);
+                        toast.success(response?.message);
                         navigate("/dashboard");
-                    } catch (error) {
-                        // Handle errors appropriately
-                        // setErrors({ server: error.response?.data?.message || 'Login failed' });
+                    } catch (error: any) {      
+                        toast.error(error.response?.data?.message ||"Something went wrong!");
                     } finally {
-                        setSubmitting(false);
                         setLoading(false); 
                     }
                 }}
             >
-                {({ isSubmitting, handleChange, handleBlur, values }) => (
-                    <Form className="bg-white p-6 rounded shadow-md w-96">
+                {({  handleChange, handleBlur, values }) => (
+                    <Form className="bg-white p-6 rounded shadow-md w-80 xs:w-96 md:w-[33rem] xl:w-96">
                         <h2 className="text-xl font-bold text-center text-primaryGray">Login</h2>
 
                         {/* Email Field */}
@@ -68,11 +72,7 @@ const Login: React.FC = () => {
                             password={true}
                             required
                         />
-                        <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
-
-                        {/* Error Message for Server-Side Validation */}
-                        <ErrorMessage name="server" component="div" className="text-red-500 text-sm text-center" />
-
+                         <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
                         {/* Submit Button */}
                         <div className="mt-[18px]">
                             <Button
