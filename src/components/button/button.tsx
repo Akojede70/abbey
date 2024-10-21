@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface ButtonProps {
-  label: string;
+  label: ReactNode;
   onClick?: () => void;
   bgColor?: string;
   hoverColor?: string;

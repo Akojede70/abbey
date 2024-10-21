@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Avatart,Logo,} from '../../assets/images-icon/';
 import { useNavigate } from 'react-router-dom';
+import { jwtDecode } from 'jwt-decode';
 function Header(): JSX.Element {
+
+
+    interface DecodedToken {
+        firstName: string;
+        lastName: string;
+    }
 
     const navigate = useNavigate()
   const handleClick = () => {
     navigate("/dashboard")
     window.scrollTo(0,0)
   }
+  const [userName, setUserName] = useState<string>('');
+
+  const decodeToken = () => {
+    const token = localStorage.getItem('token'); 
+    if (token) {
+        try {
+            const decoded: DecodedToken = jwtDecode(token);
+            setUserName(`${decoded.firstName} ${decoded.lastName}`); 
+        } catch (error) {
+            console.error('Failed to decode token', error);
+        }
+    }
+};
+
+useEffect(() => {
+    decodeToken();
+}, []); 
+
     return (
         <div className="flex items-center md:py-2 px-5 w-full overflow-hidden h-[9%] bg-[#4682B4] relative">
             <div className="flex-shrink-0 md:ml-[2%] lg:ml-[1%] w-[60px] md:w-auto ">
@@ -28,9 +53,8 @@ function Header(): JSX.Element {
                <div className='flex flex-col'>
 
                <div className="w-full px-2 text-primaryWhite">
-                    <span className="font-medium text-[16px] ">Akoiola Olalekan</span>
+                    <span className="font-medium text-[16px] ">{userName}</span>
                 </div>
-
                </div>
                
             </div>
