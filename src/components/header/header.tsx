@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Avatart,Logo,} from '../../assets/images-icon/';
 import { useNavigate } from 'react-router-dom';
