@@ -43,16 +43,37 @@ export interface IndividualUserResponse {
     users: User[]; 
 }
 
+// export const registerUser = async (data: RegisterData) => {
+//     const response = await axiosInstance.post('/api/v1/auth/register', data);
+//     if (response.data && response.data.user) {
+//         const { accessToken, refreshToken } = response.data.user; 
+//         localStorage.setItem('token', accessToken); 
+//         localStorage.setItem('refreshToken', refreshToken); 
+        
+//     }
+//     return response.data; 
+// };
+
 export const registerUser = async (data: RegisterData) => {
     const response = await axiosInstance.post('/api/v1/auth/register', data);
     if (response.data && response.data.user) {
-        const { accessToken, refreshToken } = response.data.user; 
+        const { accessToken, refreshToken, id } = response.data.user; // Assuming 'id' is returned
         localStorage.setItem('token', accessToken); 
         localStorage.setItem('refreshToken', refreshToken); 
         
+        // Store the registered userId separately
+        localStorage.setItem('registeredUserId', id); // Save userId separately
+        
+        return response.data;
     }
-    return response.data; 
+    return response.data;
 };
+
+export const getRegisteredUserId = () => {
+    const registeredUserId = localStorage.getItem('registeredUserId'); // Fetch registered user ID
+    return registeredUserId;
+};
+
 
 
 
@@ -66,9 +87,6 @@ export const loginUser = async (data: LoginData) => {
     
     return response.data; 
 };
-
-
-
 
 
 export const getLoggedInUserId = () => {

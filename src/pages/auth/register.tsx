@@ -7,6 +7,7 @@ import { registerUser } from '../../api/api';
 import { useNavigate } from 'react-router-dom';
 import { Spinner } from 'flowbite-react'; 
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const Register: React.FC = () => {
     const navigate = useNavigate();
@@ -155,7 +156,7 @@ const Register: React.FC = () => {
                         <div className="mt-4 text-center">
                             <p className="text-sm text-primaryGray">
                                 Already have an account?{' '}
-                                <a href="/" className="text-primaryBlue hover:underline">Login</a>
+                                <Link to="/" className="text-primaryBlue hover:underline">Login</Link>
                             </p>
                         </div>
                     </Form>
