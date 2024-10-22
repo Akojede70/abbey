@@ -65,7 +65,7 @@ const Followers: React.FC = () => {
   if (loading) {
     return (
       <Layout>
-        <div className='text-2xl text-center pt-[10%]'>Loading followers...</div>
+        <div className='text-2xl text-center pt-[12%]'>Loading followers...</div>
       </Layout>
     );
   }
