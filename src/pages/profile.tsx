@@ -4,6 +4,8 @@ import FollowerTab from '../components/tab/followers-tab';
 import FollowingTab from '../components/tab/following-tab';
 import { useParams } from 'react-router-dom';
 import { IndividualUserResponse, getIndividualUserDetails } from '../api/api';
+import { useNavigate } from 'react-router-dom';
+import { MdArrowBack } from 'react-icons/md';
 
 const Profile: React.FC = () => {
   const { userId } = useParams<{ userId: string }>();
@@ -23,16 +25,25 @@ const Profile: React.FC = () => {
 
     fetchUserProfile(); 
   }, [userId]);
-
+  const navigate = useNavigate(); 
   return (
     <Layout >
       {userProfile ? (
-        <div className="max-w-4xl mx-auto p-6 bg-primaryLightBlue rounded-md">
+        <div className="max-w-4xl mx-auto p-8 rounded-md">
+           <button
+        onClick={() => navigate(-1)} 
+        className="flex items-center mb-4 text-primaryBlack hover:text-primaryDark transition"
+      >
+        
+        <MdArrowBack className="mr-2" />
+        Back
+      </button>
           {/* Profile Header */}
           <div className="flex items-center gap-6 mb-6">
             <img src="https://via.placeholder.com/150" alt="Profile" className="w-24 h-24 rounded-full" />
             <div>
               <h1 className="text-2xl font-bold">{`${userProfile.user.firstName} ${userProfile.user.lastName}`}</h1>
+              <p>{`${userProfile.user.firstName.toLowerCase()}${userProfile.user.lastName.toLowerCase()}`}</p>
             </div>
           </div>
 
@@ -91,7 +102,7 @@ const Profile: React.FC = () => {
           </div>
         </div>
       ) : (
-        <div className='text-center text-4xl '> Loading Profile...</div> 
+        <div className='text-center text-4xl pt-[10%] '> Loading Profile...</div> 
       )}
     </Layout>
   );

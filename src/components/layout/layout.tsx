@@ -8,30 +8,30 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-function Layout({ name = "Home", children }: LayoutProps) {
+function Layout({ children }: LayoutProps) {
   return (
 
-    <div>
-    <div className="flex flex-col">
-    {/* Header on Top */}
+<div className="h-full relative">
+  <div>
+  <div className="absolute top-0 left-0 right-0 z-10 ">
     <Header />
-    </div>
-    <div className="w-full">
-    <div className="flex flex-grow">
-      {/* Left Sidebar */}
-      <SideBar />
-
-      {/* Middle Content Area */}
-      <div className="flex-grow w-1/2  pt-[1%] bg-[#B0C4DE] overflow-y-auto">
-        <div className="w-full h-full">{children}</div>
-      </div>
-
-       <div className="w-1/3 bg-[#f7fafc] flex item-center justify-center py-[12%]">
-       <img src={Logo} className="object-cover " alt="Big Display" />
-       </div>
-    </div>
-    </div>
   </div>
+  </div>
+  <div className="flex flex-grow">
+    <div className="w-[28%]  xl:w-1/5">
+    <SideBar />
+    </div>
+
+    <div className="flex-grow   sm:w-1/2  pt-12 bg-[#B0C4DE] overflow-y-auto h-screen scrollbar">
+       <div className="w-full h-full">{children}</div>
+    </div>
+
+    <div className=" hidden w-1/3 bg-[#f7fafc] lg:flex item-center justify-center py-[12%]">
+      <img src={Logo} className="object-cover" alt="Big Display" />
+      </div>
+  </div>
+
+</div>
   );
 }
 
