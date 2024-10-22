@@ -34,7 +34,9 @@ const Login: React.FC = () => {
                     try {
                         const response = await loginUser(values);
                         console.log('Login response:', response);
-                        toast.success(response?.message);
+                        toast.success(response?.message, {
+                            className: 'custom-toast',
+                          });                          
                         navigate("/dashboard");
                     } catch (error: any) {      
                         toast.error(error.response?.data?.message ||"Something went wrong!");
