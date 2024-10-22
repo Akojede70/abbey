@@ -28,7 +28,7 @@ const UserCard: React.FC<UserCardProps> = ({
     navigate(`/profile/${userId}`);
   }
   return (
-    <div className="bg-[#F7FAFC] p-5 rounded-lg shadow-md w-full h-[150px]">
+    <div className="bg-[#F7FAFC] p-5 rounded-lg shadow-md w-full h-[170px] md:h-[150px]">
       <div className=" text-xl font-bold">
         {firstName} {lastName}
       </div>

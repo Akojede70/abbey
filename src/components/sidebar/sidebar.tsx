@@ -17,15 +17,15 @@ function SideBar(): JSX.Element {
         {paths.map((x) => (
           <div key={x.id}>
             <div
-              className={`flex items-center h-8 lg:pl-[10%] border cursor-pointer text-capitalize w-full  lg:w-[75%] hover:bg-primaryLightBlue hover:text-primaryWhite
+              className={`flex items-center h-8 md:pl-[15%] xl:pl-[10%] cursor-pointer text-capitalize w-full md:ml-[5%] xl-ml-0 md:w-[90%] lg:w-[75%] hover:bg-primaryLightBlue hover:text-primaryWhite
                 ${window.location.pathname === x.path ? 'bg-primaryBlue h-[40px] md:w-75% rounded-md' : 'text-primaryGray h-[40px] rounded-md'}`}
               onClick={() => x.path && navigate(x.path)}
             >
-              <div className="lg:mr-2">
+              <div className="mr-1 md:mr-2">
                 {x.icon}
               </div>
               <p
-    className={`text-[18px] md:text-[18px] font-normal leading-5 hover:text-[#fffff]  ${
+    className={`text-[18px] md:text-[30px] xl:text-[18px] font-normal leading-5 hover:text-[#fffff]  ${
       window.location.pathname === x.path ? 'text-primaryWhite' : 'text-[#7E7F7F]'
     }`}
   >
@@ -35,7 +35,7 @@ function SideBar(): JSX.Element {
             
           </div>
         ))}
-        <div className='my-[35%] pl-1 md:pl-3 '>
+        <div className='my-[35%] pl-1 md:pl-3 md:ml-[15%] xl:ml-0'>
     <Button label='Log Out' className='w-[90%] md:w-[70%]' onClick={handleLogout}></Button>
   </div>
       </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../../components/layout/layout';
 import FollowerCard from '../../components/card/followers-card';
 import { User, getloggedinUserConnections, IndividualUserResponse, getLoggedInUserId, followUser, unfollowUser } from '../../api/api'; 
+import { toast } from 'react-toastify';
 
 const Followers: React.FC = () => {
   const [followers, setFollowers] = useState<User[]>([]); 
@@ -16,13 +17,11 @@ const Followers: React.FC = () => {
         if (loggedInUserId) {
           const data: IndividualUserResponse = await getloggedinUserConnections(loggedInUserId);
           setFollowers(data.followersList);
-          // Set followed users based on the logged-in user's following list
           setFollowedUsers(new Set(data.followingList.map(user => user.id))); 
         } else {
           setError('User not logged in'); 
         }
       } catch (error) {
-        console.error('Error fetching followers:', error);
         setError('Failed to load followers');
       } finally {
         setLoading(false); 
@@ -35,7 +34,6 @@ const Followers: React.FC = () => {
   const handleFollowClick = async (followerId: number) => {
     const loggedInUserId = getLoggedInUserId(); 
     if (!loggedInUserId) {
-      console.error('User is not logged in.');
       return; 
     }
 
@@ -59,15 +57,15 @@ const Followers: React.FC = () => {
           return newSet; 
         });
       }
-    } catch (error) {
-      // console.error('Error while trying to follow/unfollow user:', error.message); 
+    } catch (error:any) {
+      toast.error(error.response?.data?.message ||"Something went wrong!");
     }
   };
 
   if (loading) {
     return (
       <Layout>
-        <div className='text-2xl text-center'>Loading followers...</div>
+        <div className='text-2xl text-center pt-[10%]'>Loading followers...</div>
       </Layout>
     );
   }
@@ -83,7 +81,7 @@ const Followers: React.FC = () => {
   return (
     <Layout>
       <div className="p-4">
-        <h1 className="text-xl font-bold mb-4">Followers</h1>
+        <h1 className="text-xl font-bold mb-4 pt-[5%]">Followers</h1>
         <div className="flex flex-col gap-4">
           {followers.length === 0 ? (
             <p>No followers found.</p>

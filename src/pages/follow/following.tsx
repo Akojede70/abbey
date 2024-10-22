@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../../components/layout/layout';
 import FollowerCard from '../../components/card/followers-card';
 import { User, getloggedinUserConnections, IndividualUserResponse, getLoggedInUserId, followUser, unfollowUser } from '../../api/api'; 
+import { toast } from 'react-toastify';
 
 const Following: React.FC = () => {
   const [following, setFollowing] = useState<User[]>([]); 
@@ -15,14 +16,12 @@ const Following: React.FC = () => {
         const loggedInUserId = getLoggedInUserId(); 
         if (loggedInUserId) {
           const data: IndividualUserResponse = await getloggedinUserConnections(loggedInUserId);
-          setFollowing(data.followingList); // Fetch the list of users that the logged-in user is following
-          // Set followed users based on the logged-in user's following list
+          setFollowing(data.followingList); 
           setFollowedUsers(new Set(data.followingList.map(user => user.id))); 
         } else {
           setError('User not logged in'); 
         }
       } catch (error) {
-        console.error('Error fetching following:', error);
         setError('Failed to load following');
       } finally {
         setLoading(false); 
@@ -61,15 +60,15 @@ const Following: React.FC = () => {
           return newSet; 
         });
       }
-    } catch (error) {
-      // console.error('Error while trying to follow/unfollow user:', error.message); 
+    } catch (error:any) {
+      toast.error(error.response?.data?.message ||"Something went wrong!");
     }
   };
 
   if (loading) {
     return (
       <Layout>
-        <div className='text-2xl text-center'>Loading People you are following...</div>
+        <div className='text-2xl text-center pt-[10%]'>Loading People you are following...</div>
       </Layout>
     );
   }
@@ -85,7 +84,7 @@ const Following: React.FC = () => {
   return (
     <Layout>
       <div className="p-4">
-        <h1 className="text-xl font-bold mb-4">Following</h1>
+        <h1 className="text-xl font-bold mb-4 pt-[5%]">Following</h1>
         <div className="flex flex-col gap-4">
           {following.length === 0 ? (
             <p>you haven't followed anyone yet.</p>

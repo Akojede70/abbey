@@ -42,8 +42,8 @@ const Profile: React.FC = () => {
           <div className="flex items-center gap-6 mb-6">
             <img src="https://via.placeholder.com/150" alt="Profile" className="w-24 h-24 rounded-full" />
             <div>
-              <h1 className="text-2xl font-bold">{`${userProfile.user.firstName} ${userProfile.user.lastName}`}</h1>
-              <p>{`${userProfile.user.firstName.toLowerCase()}${userProfile.user.lastName.toLowerCase()}`}</p>
+              <h1 className="text-2xl font-bold">{`${userProfile.user.firstName.charAt(0).toUpperCase() + userProfile.user.firstName.slice(1)} ${userProfile.user.lastName.charAt(0).toUpperCase() + userProfile.user.lastName.slice(1)}`}</h1>
+              <p>@{`${userProfile.user.firstName.toLowerCase()}${userProfile.user.lastName.toLowerCase()}`}</p>
             </div>
           </div>
 
@@ -78,7 +78,6 @@ const Profile: React.FC = () => {
             </button>
           </div>
 
-          {/* Followers or Following List */}
           <div className="space-y-4">
             {activeTab === 'followers'
               ? userProfile.followersList.map((follower, index: number) => (

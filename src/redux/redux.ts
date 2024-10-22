@@ -11,19 +11,19 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-// Create a persist config
+// Creating a persist config
 const persistConfig = {
   key: 'root',
   storage,
 };
 
-// Create a persisted reducer
+// Creating a persisted reducer
 const persistedReducer = persistReducer(persistConfig, userReducer);
 
 // Configure the store
 const store = configureStore({
   reducer: {
-    user: persistedReducer, // Use the persisted reducer
+    user: persistedReducer, // Using the persisted reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -33,7 +33,7 @@ const store = configureStore({
     }),
 });
 
-// Create a persistor
+// Creating a persistor
 export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;

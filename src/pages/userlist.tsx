@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../components/layout/layout';
 import UserCard from '../components/card/userscard';
 import { getAllUsers, followUser, unfollowUser, getLoggedInUserId, getIndividualUserDetails } from '../api/api'; // Import the new API function
+import { toast } from 'react-toastify';
 
 const UsersList: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]); 
@@ -23,7 +24,7 @@ const UsersList: React.FC = () => {
 
   // Fetch the following list for the logged-in user
   const fetchFollowingList = async () => {
-    const followerId = getLoggedInUserId(); // Get the logged-in user's ID
+    const followerId = getLoggedInUserId(); 
     if (!followerId) {
       console.error('User is not logged in.');
       return;
@@ -45,7 +46,6 @@ const UsersList: React.FC = () => {
   const handleFollowClick = async (followingId: number) => {
     const followerId = getLoggedInUserId(); 
     if (!followerId) {
-      console.error('User is not logged in.');
       return; // Exit if the user is not logged in
     }
 
@@ -69,8 +69,8 @@ const UsersList: React.FC = () => {
           return newSet; // Return the new Set to update state
         });
       }
-    } catch (error) {
-      // console.error('Error while trying to follow/unfollow user:', error.message); // Handle errors
+    } catch (error: any) {
+      toast.error(error.response?.data?.message ||"Something went wrong!");
     }
   };
 

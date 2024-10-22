@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   label,
   onClick,
   bgColor = 'bg-primaryBlue', 
-  hoverColor = 'hover:bg-primaryLightBlue', 
+  hoverColor = 'hover:bg-primaryGray', 
   textColor = 'text-white', 
   className = '', 
   type = "button",
